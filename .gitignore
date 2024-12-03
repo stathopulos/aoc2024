@@ -1,2 +1,5 @@
 # Dune build directory
 _build
+
+#Advent Of Code inputs
+input.txt
