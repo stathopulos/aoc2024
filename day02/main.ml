@@ -13,6 +13,16 @@ let rec is_safe = function
 let part_1 lst =
   List.fold_left (fun acc a -> if is_safe a then acc + 1 else acc) 0 lst
 
+let part_2 lst =
+  let try_all lst =
+    let rec aux hd = function
+      | [] -> false
+      | x :: xs -> is_safe (hd @ xs) || aux (hd @ [ x ]) xs
+    in
+    aux [] lst
+  in
+  List.fold_left (fun acc a -> if try_all a then acc + 1 else acc) 0 lst
+
 let () =
   let reports =
     read_lines "input.txt"
@@ -20,4 +30,5 @@ let () =
     |> List.filter (( <> ) "")
     |> List.map levels
   in
-  Printf.printf "Part 1: %d\n" (part_1 reports)
+  Printf.printf "Part 1: %d\n" (part_1 reports);
+  Printf.printf "Part 2: %d" (part_2 reports)
