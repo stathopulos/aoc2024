@@ -10,6 +10,10 @@ let part_1 a b =
   let sorted_right = List.sort ( - ) b in
   List.fold_left2 (fun acc a b -> acc + abs (a - b)) 0 sorted_left sorted_right
 
+let part_2 left right =
+  let count x lst = List.length @@ List.filter (( = ) x) lst in
+  List.fold_left (fun acc x -> acc + (x * count x right)) 0 left
+
 let () =
   let a, b =
     read_lines "input.txt"
@@ -18,4 +22,5 @@ let () =
     |> List.map pairs
     |> List.split
   in
-  Printf.printf "Part 1: %d\n" (part_1 a b)
+  Printf.printf "Part 1: %d\n" (part_1 a b);
+  Printf.printf "Part 2: %d" (part_2 a b)
