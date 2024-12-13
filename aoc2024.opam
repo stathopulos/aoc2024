@@ -10,7 +10,7 @@ tags: ["aoc" "ocaml"]
 homepage: "https://github.com/stathopulos/aoc2024"
 bug-reports: "https://github.com/stathopulos/aoc2024/issues"
 depends: [
-  "ocaml" {>= "5"}
+  "ocaml" {>= "5.1"}
   "dune" {>= "3.16"}
   "odoc" {with-doc}
 ]
